@@ -15,6 +15,9 @@ classdef GetPoints < matlab.apps.AppBase
 %  
 %   [3] Control points must all be added in the same "Control Point" call.
 % 
+%   [4] Note that for log data outputs, the log10(x) value is ouput for use
+%   in the OverPlot utility. True values can be recovered with 10^(x)
+%
 
     % Properties that correspond to app components
     properties (Access = public)
@@ -229,10 +232,10 @@ classdef GetPoints < matlab.apps.AppBase
             % Try to put the file path together            
             if and(isempty(path), isempty(ext))
                 outName = ['./',name,'.csv'];
-                fprintf('No path was entered, assuming current working directory\n.')
+                fprintf('No path was entered, assuming current working directory.\n')
             elseif and(isempty(path), ~isempty(ext))
                 outName = ['./',name];
-                fprintf('No path was entered, assuming current working directory\n.')
+                fprintf('No path was entered, assuming current working directory.\n')
             else
                 % At this point its on the user im not doing error checking 
                 outName = name;
